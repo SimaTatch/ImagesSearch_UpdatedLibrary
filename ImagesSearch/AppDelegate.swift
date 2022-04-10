@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  ImagesSearch
-//
-//  Created by Серафима  Татченкова  on 28.03.2022.
-//
+
 
 import UIKit
 
