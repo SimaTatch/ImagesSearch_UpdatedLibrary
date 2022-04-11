@@ -70,8 +70,12 @@ class LikesCollectionViewController: UICollectionViewController {
         let alertController = UIAlertController(title: "", message: "\(selectedPhotos!.count) фото будут удалены из альбома", preferredStyle: .alert)
         let add = UIAlertAction(title: "Удалить", style: .default) { (action) in
             
-
-//          self.photos.removeAll(where: {selectedPhotos.contains($0 as UnsplashPhoto)})
+            
+            self.photos.removeAll {photo in
+                selectedPhotos?.contains(where: { selected in
+                    photo.urls == selected.urls
+                }) ?? false
+            }
             
             self.collectionView.reloadData()
             self.refresh()

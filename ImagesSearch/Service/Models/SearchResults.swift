@@ -12,6 +12,7 @@ struct UnsplashPhoto: Decodable {
     let height: Int
     let urls: [UrLKing.RawValue:String]
     
+    
     enum UrLKing: String {
         case raw
         case full
