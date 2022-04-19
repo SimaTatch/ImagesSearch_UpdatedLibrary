@@ -24,6 +24,8 @@
 		92E4BE502800AE150082F63C /* LikesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4BE4F2800AE150082F63C /* LikesCollectionViewController.swift */; };
 		92E4BE522800AE780082F63C /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4BE512800AE780082F63C /* LikesCollectionViewCell.swift */; };
 		92E4BE542800AF2A0082F63C /* UIKit + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4BE532800AF2A0082F63C /* UIKit + Extension.swift */; };
+		92E4BE66280C86520082F63C /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 92E4BE65280C86520082F63C /* CropViewController */; };
+		92E4BE68280C86520082F63C /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 92E4BE67280C86520082F63C /* TOCropViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E4BE4C27FEE8A40082F63C /* SDWebImage in Frameworks */,
+				92E4BE68280C86520082F63C /* TOCropViewController in Frameworks */,
+				92E4BE66280C86520082F63C /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +161,8 @@
 			name = ImagesSearch;
 			packageProductDependencies = (
 				92E4BE4B27FEE8A40082F63C /* SDWebImage */,
+				92E4BE65280C86520082F63C /* CropViewController */,
+				92E4BE67280C86520082F63C /* TOCropViewController */,
 			);
 			productName = ImagesSearch;
 			productReference = 929F870D27F1CFF1007E105E /* ImagesSearch.app */;
@@ -188,6 +194,7 @@
 			mainGroup = 929F870427F1CFF1007E105E;
 			packageReferences = (
 				92E4BE4A27FEE8A40082F63C /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = 929F870E27F1CFF1007E105E /* Products */;
 			projectDirPath = "";
@@ -462,6 +469,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -469,6 +484,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 92E4BE4A27FEE8A40082F63C /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		92E4BE65280C86520082F63C /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		92E4BE67280C86520082F63C /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
