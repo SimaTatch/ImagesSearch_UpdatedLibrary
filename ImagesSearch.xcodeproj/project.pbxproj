@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9237B2F328102DBD002179BD /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9237B2F228102DBD002179BD /* PhotoViewModel.swift */; };
 		929F871127F1CFF1007E105E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F871027F1CFF1007E105E /* AppDelegate.swift */; };
 		929F871327F1CFF1007E105E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F871227F1CFF1007E105E /* SceneDelegate.swift */; };
 		929F871527F1CFF1007E105E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F871427F1CFF1007E105E /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9237B2F228102DBD002179BD /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		929F870D27F1CFF1007E105E /* ImagesSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagesSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F871027F1CFF1007E105E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		929F871227F1CFF1007E105E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				929F872827F46505007E105E /* NetworkService.swift */,
 				929F872C27F5A05E007E105E /* NetworkDataFetcher.swift */,
+				9237B2F228102DBD002179BD /* PhotoViewModel.swift */,
 				929F873127F5A11A007E105E /* Models */,
 			);
 			path = Service;
@@ -232,6 +235,7 @@
 				929F872527F1D030007E105E /* MainTabBarController.swift in Sources */,
 				929F872727F1F63C007E105E /* PhotosCollectionViewController.swift in Sources */,
 				929F872927F46505007E105E /* NetworkService.swift in Sources */,
+				9237B2F328102DBD002179BD /* PhotoViewModel.swift in Sources */,
 				929F872F27F5A0E8007E105E /* SearchResults.swift in Sources */,
 				929F871327F1CFF1007E105E /* SceneDelegate.swift in Sources */,
 				92E4BE4E2800ADD10082F63C /* WaterfallLayout.swift in Sources */,

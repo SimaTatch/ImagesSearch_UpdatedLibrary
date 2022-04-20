@@ -11,8 +11,12 @@ import CropViewController
 class LikesCollectionViewController: UICollectionViewController, CropViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: - Private objects setup
-    var photos = [UnsplashPhoto]()
-    
+    var photos = [UnsplashPhoto]() {
+        didSet {
+            updateViewModels()
+        }
+    }
+    var viewModels = [PhotoViewModel]()
     private let myImageView = UIImageView()
     
     private var myImage: UIImage?
@@ -22,7 +26,7 @@ class LikesCollectionViewController: UICollectionViewController, CropViewControl
     private var croppedAngle = 0
     
     private var selectedImages = [UIImage]()
-    
+    private var editingIndexPath: IndexPath?
     private var numberOfSelectedPhotos: Int {
         return collectionView.indexPathsForSelectedItems?.count ?? 0
     }
@@ -77,7 +81,11 @@ class LikesCollectionViewController: UICollectionViewController, CropViewControl
         layoutImageView()
     }
     
-    
+
+    func updateViewModels() {
+        viewModels = photos.map { PhotoViewModel(unsplashPhoto: $0) }
+    }
+
     //MARK: - cropVC func
     public func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         self.croppedRect = cropRect
@@ -96,23 +104,10 @@ class LikesCollectionViewController: UICollectionViewController, CropViewControl
         layoutImageView()
         self.refresh()
 
-        
-        if cropViewController.croppingStyle != .circular {
-            myImageView.isHidden = true
-            
-            self.collectionView.reloadData()
-            
-            cropViewController.dismissAnimatedFrom(self, withCroppedImage: image,
-                                                   toView: myImageView,
-                                                   toFrame: CGRect.zero,
-                                                   setup: { self.layoutImageView() },
-                                                   completion: {
-                                                    self.myImageView.isHidden = false })
-        }
-        else {
-            self.myImageView.isHidden = false
-            cropViewController.dismiss(animated: true, completion: nil)
-        }
+        myImageView.isHidden = true
+        guard let selectedIndex = editingIndexPath else { return }
+        viewModels[selectedIndex.item].update(image: image)
+        cropViewController.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Supporting func
@@ -156,6 +151,7 @@ class LikesCollectionViewController: UICollectionViewController, CropViewControl
     }
     
     @objc func editLikesPhotos() {
+        editingIndexPath = self.collectionView.indexPathsForSelectedItems?.first
         cropCustomImage(image: selectedImages.first!)
      }
     
@@ -231,13 +227,12 @@ class LikesCollectionViewController: UICollectionViewController, CropViewControl
     // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         enterSearchTermLabel.isHidden = photos.count != 0
-        return photos.count
+        return viewModels.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikesCollectionViewCell.reuseId, for: indexPath) as! LikesCollectionViewCell
-        let unsplashPhoto = photos[indexPath.item]
-        cell.unsplashPhoto = unsplashPhoto
+        cell.configure(with: viewModels[indexPath.item])
         return cell
     }
     

@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 import SDWebImage
+import Combine
 
 class LikesCollectionViewCell: UICollectionViewCell {
-    
+    private var cancellable = Set<AnyCancellable>()
     static let reuseId = "LikesCollectionViewCell"
-    
+    private var viewModel: PhotoViewModel?
     var myImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -30,13 +31,7 @@ class LikesCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    var unsplashPhoto: UnsplashPhoto! {
-        didSet {
-            let photoUrl = unsplashPhoto.urls["regular"]
-            guard let imageUrl = photoUrl, let url = URL(string: imageUrl) else { return }
-            myImageView.sd_setImage(with: url, completed: nil)
-        }
-    }
+    var unsplashPhoto: UnsplashPhoto!
     
     override var isSelected: Bool {
         didSet {
@@ -47,6 +42,7 @@ class LikesCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         myImageView.image = nil
+        cancellable.forEach({ $0.cancel() })
     }
     
     override init(frame: CGRect) {
@@ -75,13 +71,35 @@ class LikesCollectionViewCell: UICollectionViewCell {
         сheckmarkView.bottomAnchor.constraint(equalTo: myImageView.bottomAnchor,constant: -8).isActive = true
         сheckmarkView.trailingAnchor.constraint(equalTo: myImageView.trailingAnchor,constant: -8).isActive = true
     }
-    
-    func set(photo: UnsplashPhoto) {
-        let photoUrl = photo.urls["full"]
-        guard let photoURL = photoUrl, let url = URL(string: photoURL) else { return }
-        myImageView.sd_setImage(with: url, completed: nil)
+
+    func configure(with viewModel: PhotoViewModel) {
+        self.viewModel = viewModel
+        bindig()
+
     }
-    
+
+    func bindig() {
+        viewModel?.$image
+            .sink(receiveValue: { image in
+                self.myImageView.image = image
+            })
+            .store(in: &cancellable)
+    }
+//    func set(photo: UnsplashPhoto) {
+//        let photoUrl = photo.urls["full"]
+//        guard let photoURL = photoUrl, let url = URL(string: photoURL) else { return }
+//        guard let cropedImage = photo.croppedImage else {
+//            myImageView.sd_setImage(with: url, completed: nil)
+//            return
+//        }
+//        myImageView.image = cropedImage
+//    }
+
+
+    func updateCroped(image: UIImage) {
+        myImageView.image = image
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
