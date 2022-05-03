@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9237B2F328102DBD002179BD /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9237B2F228102DBD002179BD /* PhotoViewModel.swift */; };
+		927EE1152821787F00009006 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 927EE1142821787F00009006 /* CropViewController */; };
+		927EE1172821787F00009006 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 927EE1162821787F00009006 /* TOCropViewController */; };
 		929F871127F1CFF1007E105E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F871027F1CFF1007E105E /* AppDelegate.swift */; };
 		929F871327F1CFF1007E105E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F871227F1CFF1007E105E /* SceneDelegate.swift */; };
 		929F871527F1CFF1007E105E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F871427F1CFF1007E105E /* ViewController.swift */; };
@@ -25,8 +27,6 @@
 		92E4BE502800AE150082F63C /* LikesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4BE4F2800AE150082F63C /* LikesCollectionViewController.swift */; };
 		92E4BE522800AE780082F63C /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4BE512800AE780082F63C /* LikesCollectionViewCell.swift */; };
 		92E4BE542800AF2A0082F63C /* UIKit + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4BE532800AF2A0082F63C /* UIKit + Extension.swift */; };
-		92E4BE66280C86520082F63C /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 92E4BE65280C86520082F63C /* CropViewController */; };
-		92E4BE68280C86520082F63C /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 92E4BE67280C86520082F63C /* TOCropViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,8 +57,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E4BE4C27FEE8A40082F63C /* SDWebImage in Frameworks */,
-				92E4BE68280C86520082F63C /* TOCropViewController in Frameworks */,
-				92E4BE66280C86520082F63C /* CropViewController in Frameworks */,
+				927EE1172821787F00009006 /* TOCropViewController in Frameworks */,
+				927EE1152821787F00009006 /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,8 +164,8 @@
 			name = ImagesSearch;
 			packageProductDependencies = (
 				92E4BE4B27FEE8A40082F63C /* SDWebImage */,
-				92E4BE65280C86520082F63C /* CropViewController */,
-				92E4BE67280C86520082F63C /* TOCropViewController */,
+				927EE1142821787F00009006 /* CropViewController */,
+				927EE1162821787F00009006 /* TOCropViewController */,
 			);
 			productName = ImagesSearch;
 			productReference = 929F870D27F1CFF1007E105E /* ImagesSearch.app */;
@@ -197,7 +197,7 @@
 			mainGroup = 929F870427F1CFF1007E105E;
 			packageReferences = (
 				92E4BE4A27FEE8A40082F63C /* XCRemoteSwiftPackageReference "SDWebImage" */,
-				92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */,
+				927EE1132821787F00009006 /* XCRemoteSwiftPackageReference "CustomTOCropViewController" */,
 			);
 			productRefGroup = 929F870E27F1CFF1007E105E /* Products */;
 			projectDirPath = "";
@@ -465,6 +465,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		927EE1132821787F00009006 /* XCRemoteSwiftPackageReference "CustomTOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimaTatch/CustomTOCropViewController.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		92E4BE4A27FEE8A40082F63C /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -473,31 +481,23 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		927EE1142821787F00009006 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 927EE1132821787F00009006 /* XCRemoteSwiftPackageReference "CustomTOCropViewController" */;
+			productName = CropViewController;
+		};
+		927EE1162821787F00009006 /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 927EE1132821787F00009006 /* XCRemoteSwiftPackageReference "CustomTOCropViewController" */;
+			productName = TOCropViewController;
+		};
 		92E4BE4B27FEE8A40082F63C /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 92E4BE4A27FEE8A40082F63C /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
-		};
-		92E4BE65280C86520082F63C /* CropViewController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */;
-			productName = CropViewController;
-		};
-		92E4BE67280C86520082F63C /* TOCropViewController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 92E4BE64280C86520082F63C /* XCRemoteSwiftPackageReference "TOCropViewController" */;
-			productName = TOCropViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
